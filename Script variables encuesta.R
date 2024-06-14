@@ -131,7 +131,7 @@ tablaEdad
 tablaEdadRel <- prop.table(x=tablaEdad)*100
 tablaEdadRel
 barplot(tablaEdadRel, main= "Gráfico 1: Porcentaje de personas por edad", 
-        xlab = "Edad", ylab = "Porcentaje"
+        xlab = "Edad", ylab = "Porcentaje",
         col = c("purple", "lightgreen", "lightyellow", "lightpink", "lightblue"),
         ylim = c(0, 60))
 #2. Graficando variable de género
@@ -280,7 +280,12 @@ barplot(ParticipacionInstanciasUniversitariasRel,
 #aquí va el código
 tablaParticipacionInstanciasExternas <- table(Base_de_Datos_raw$particip_inst_externasCod)
 tablaParticipacionInstanciasExternas
-tablaParticipacionInstanciasExternasRel <- prop.table (x=tablaParticipacion
+tablaParticipacionInstanciasExternasRel <- prop.table (x=tablaParticipacionInstanciasExternas)*100
+tablaParticipacionInstanciasExternasRel
+barplot(tablaParticipacionInstanciasExternasRel,
+        main = "Gráfico 23. Porcentaje de Participación en Instancias Externas",
+        xlab = "Participacion", ylab = "Porcentaje", col = c("lightgreen", "lightyellow"))
+       
 
 #24. Graficando variable de participación en instancias externas 1 (identificación por términos)
 #aquí va el código
@@ -293,8 +298,13 @@ tablaParticipacionInstanciasExternasRel <- prop.table (x=tablaParticipacion
 
 #27. Graficando variable de participación política en el futuro
 #aquí va el código
-
-
+tablaParticipacionFutura <- table(Base_de_Datos_raw$particip_futuraCod)
+tablaParticipacionFutura
+tablaParticipacionFuturaRel <- prop.table (x=tablaParticipacionFutura)*100
+tablaParticipacionFuturaRel
+barplot(tablaParticipacionFuturaRel, 
+        main = "Gráfico 27. Porcentaje de personas que participarían en un futuro", 
+        xlab = "¿Participaría?", ylab = "Porcentaje", col = c("purple", "lightgreen", "lightyellow", "lightpink", "lightblue"))
 
 ##################################################################
 ############ Estableciendo relaciones entre variables ############
@@ -333,3 +343,16 @@ tablaGenIdeolTerm3
 tablaGenIdeolTerm3Rel <- prop.table(x=tablaGenIdeolTerm3)*100
 tablaGenIdeolTerm3Rel <- round(tablaGenIdeolTerm3Rel, digits = 2)
 tablaGenIdeolTerm3Rel
+
+#Relación entre Edad y Participación Futura
+tablaEdadPartFutura <- table(Base_de_Datos_raw$particip_futuraCod, Base_de_Datos_raw$EdadCod)
+tablaEdadPartFutura
+tablaEdadPartFuturaRel <- prop.table(x=tablaEdadPartFutura, margin = 2)*100
+tablaEdadPartFuturaRel
+#Graficando
+barplot(tablaEdadPartFuturaRel, main = "Relación entre Edad y Participación Futura",
+        xlab = "Edad", ylab= "Participación Futura", col = c("purple", "lightgreen", "lightyellow", "lightpink", "lightblue"))
+legend(x="topright", legend = c("Totalmente en desacuerdo", "En desacuerdo", "Ni de acuerdo ni en desacuerdo", "De acuerdo", "Totalmente de acuerdo"),fill = c("purple", "lightgreen", "lightyellow", "lightpink", "lightblue"),
+title = ("Posición"))
+
+        
