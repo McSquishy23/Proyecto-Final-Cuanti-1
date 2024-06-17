@@ -69,15 +69,12 @@ Base_de_Datos_raw$id_ideologia_terminos1Cod <- factor(Base_de_Datos_raw$id_ideol
                                                                  "Libertario", "Nacionalista", "Progresista",
                                                                  "Socialdemócrata", "Socialista", "Otro"))
 table(Base_de_Datos_raw$id_ideologia_terminos1)
-
 #11. Generando variable de ideología política - términos2
 Base_de_Datos_raw$id_ideologia_terminos2Cod <- factor(Base_de_Datos_raw$id_ideologia_terminos2, 
                                                       labels = c("Comunista", "Ecologista", "Liberal",
                                                                  "Libertario", "Nacionalista", "Progresista",
                                                                  "Socialdemócrata", "Socialista", "Otro"))
 table(Base_de_Datos_raw$id_ideologia_terminos2)
-
-
 #12. Generando variable de ideología política - términos3
 Base_de_Datos_raw$id_ideologia_terminos3Cod <- factor(Base_de_Datos_raw$id_ideologia_terminos3, 
                                                       labels = c("Ecologista", "Liberal", "Libertario",
@@ -89,15 +86,14 @@ table(Base_de_Datos_raw$id_ideologia_terminos3)
 Base_de_Datos_raw$pref_partido_polCod <-factor(Base_de_Datos_raw$pref_partido_pol, 
                                                labels = c( "PPSD", "PLN", "PNR", "PLP",
                                                            "FA", "Ninguno", "Otro"))
-
 #14. Generando variable de militancia en partido político (sí/no)
 Base_de_Datos_raw$militancia_partido_polCod <- factor(Base_de_Datos_raw$militancia_partido_pol,
                                                       labels = c("Sí", "No"))
 table(Base_de_Datos_raw$militancia_partido_polCod)
 
 #15. Generando variable de militancia en partido político (identificación por partido)
-#aquí va el código
-
+Base_de_Datos_raw$id_militancia_partido_polCod <- factor(Base_de_Datos_raw$id_militancia_partido_pol,
+                                                         labels = c("PLN", "FA"))
 #16. Generando variable de preferencia de partido federativo
 Base_de_Datos_raw$pref_partido_fedCod <- factor(Base_de_Datos_raw$pref_partido_fed, 
                                                 labels = c("Alternativa", "Integra", 
@@ -111,8 +107,8 @@ table(Base_de_Datos_raw$militancia_partido_fedCod)
 
 #18. Generando variable de militancia en partido federativo (identificación por partido)
 #aquí va el código
-
-
+Base_de_Datos_raw$id_militancia_partido_fedCod <- factor(Base_de_Datos_raw$id_militancia_partido_fed,
+                                                         labels = c("Alternativa", "Integra"))
 #19. Generando variable de participación en instancias universitarias (sí/no)
 Base_de_Datos_raw$particip_inst_universitariasCod <- factor(Base_de_Datos_raw$particip_inst_universitarias,
                                                             labels = c("Sí", "No"))
@@ -141,14 +137,20 @@ Base_de_Datos_raw$id_particip_inst_universitarias2Cod <- factor(Base_de_Datos_ra
 Base_de_Datos_raw$particip_inst_externasCod <- factor(Base_de_Datos_raw$particip_inst_externas,
                                                       labels = c("Sí", "No"))
 #24. Generando variable de participación en instancias externas 1 (identificación por términos)
-#aquí va el código
-
+Base_de_Datos_raw$id_particip_inst_externas1Cod <- factor(Base_de_Datos_raw$id_particip_inst_externas1,
+                                                          labels =  c("Partidos Municipales", "Organizaciones Comunales", "Manifestaciones Políticas", 
+                                                                      "Organizaciones de la sociedad civil", "Asistencia y observación a procesos electorales mediante entidades como el TSE",
+                                                                      "Otras"))
 #25. Generando variable de participación en instancias externas 2 (identificación por términos)
-#aquí va el código
+Base_de_Datos_raw$id_particip_inst_externas2Cod <- factor(Base_de_Datos_raw$id_particip_inst_externas2,
+                                                          labels =  c("Organizaciones Comunales", "Manifestaciones Políticas",
+                                                                      "Organizaciones de la sociedad civil", 
+                                                                      "Asistencia y observación a procesos electorales mediante entidades como el TSE"))
 
 #26. Generando variable de participación en instancias externas 3 (identificación por términos)
-#aquí va el código
-
+Base_de_Datos_raw$id_particip_inst_externas3Cod <- factor(Base_de_Datos_raw$id_particip_inst_externas3,
+                                                          labels = c("Manifestaciones Políticas", "Organizaciones de la sociedad civil",
+                                                                     "Asistencia y observación a procesos electorales mediante entidades como el TSE", "Organizaciones Sindicales"))
 #27. Generando variable de participación política en el futuro
 Base_de_Datos_raw$particip_futuraCod <- factor(Base_de_Datos_raw$particip_futura,
                                                labels = c("Totalmente de desacuerdo", "En desacuerdo", "Ni en desacuerdo ni de acuerdo", "De acuerdo", "Totalmente de acuerdo"))
@@ -166,7 +168,6 @@ barplot(tablaEdadRel, main= "Gráfico 1: Porcentaje de participantes por edad",
         xlab = "Edad", ylab = "Porcentaje",
         col = c("mediumorchid", "lightgreen", "lightyellow", "lightpink", "lightblue"),
         ylim = c(0, 80))
-
 #2. Graficando variable de género
 tablaGenero <- table(Base_de_Datos_raw$generoCod)
 tablaGenero
@@ -176,7 +177,6 @@ barplot(tablaGeneroRel, main = "Gráfico 2: Porcentaje de identidad de género",
         xlab = "Género", ylab = "Porcentaje",
         col = c("mediumorchid", "palegreen4", "goldenrod1", "ivory4"),
         ylim = c(0, 60))
-
 #3. Graficando variable de ser o no trans
 tablaEs_trans <- table(Base_de_Datos_raw$es_transCod)
 tablaEs_trans
@@ -186,8 +186,6 @@ barplot(tablaEs_transRel, main = "Gráfico 3: Porcentaje de identidad trans",
         xlab = "Es o no es trans", ylab = "Porcentaje",
         col = c("plum1", "lightblue1"),
         ylim = c(0, 100))
-
-
 #4. Graficando variable de sexualidad
 tablaSexualidad <- table(Base_de_Datos_raw$sexualidadCod)
 tablaSexualidad
@@ -197,59 +195,54 @@ barplot(tablaSexualidadRel, main = "Gráfico 4: Porcentaje de identificación de
         xlab = "Sexualidad", ylab = "Porcentaje",
         col = c("palevioletred", "steelblue3", "wheat3"),
         ylim = c(0, 70))
-
 #5. Graficando variable de provincia
 tablaProvincia <-table(Base_de_Datos_raw$provinciaCod)
 tablaProvincia
 tablaProvinciaRel <- prop.table(x=tablaProvincia)*100
 tablaProvinciaRel
-plot(Base_de_Datos_raw$provinciaCod, main = "Gráfico 5: Provincia de origen",
-     xlab = "provincia", ylab = "Frecuencia",  col = c("royalblue", "seagreen", "hotpink4",
+barplot(Base_de_Datos_raw$provinciaCod, 
+        main = "Gráfico 5: Provincia de origen",
+        xlab = "provincia", ylab = "Porcentaje",  col = c("royalblue", "seagreen", "hotpink4",
                                                        "mistyrose3", "firebrick2",
                                                        "olivedrab4", "red4", "mediumpurple4"))
-
 #6. Graficando variable de carrera 1
 tablaCarrera1 <-table(Base_de_Datos_raw$carrera1Cod)
 tablaCarrera1
 tablacarrera1Rel <- prop.table(x=tablaCarrera1)*100
 tablacarrera1Rel
-plot(Base_de_Datos_raw$carrera1Cod, main = "Gráfico 6: Carrera del participante",
-     xlab = "Carrera", ylab = "Frecuencia",  col = c("red", "green", "royalblue", "pink", "yellow",
+barplot(Base_de_Datos_raw$carrera1Cod, 
+        main = "Gráfico 6: Carrera del participante",
+        xlab = "Carrera", ylab = "Porcentaje",  col = c("red", "green", "royalblue", "pink", "yellow",
                                                      "orange", "beige", "brown", "salmon", "gray", "violet", "purple","magenta",
-                                                     "coral", "gold", "azure", "maroon", "cyan", "red4", "tomato", "sienna", "tan2",
-                                                     
+                                                     "coral", "gold", "azure", "maroon", "cyan", "red4", "tomato", "sienna", "tan2",  
                                                      "turquoise", "white", "yellowgreen","tomato3" , "brown", "cadetblue", "gold4", "orange2",
                                                      "orchid", "snow", "palegreen", "steelblue3", "blueviolet", "olivedrab", "chartreuse1" ))
-
 #7. Graficando variable de carrera 2
 #aquí va el código
 tablacarrera2 <-table(Base_de_Datos_raw$carrera2Cod)
 tablacarrera2
 tablacarrera2Rel <- prop.table(x=tablacarrera2)*100
 tablacarrera2Rel
-plot(Base_de_Datos_raw$carrera2Cod, main = "Gráfico 7. :Segunda Carrera del participante",
-     xlab = "Carrera", ylab = "Frecuencia",  col = c("red","blue", "yellow", "pink" ))
-
-
+barplot(Base_de_Datos_raw$carrera2Cod,
+        main = "Gráfico 7. :Segunda Carrera del participante",
+        xlab = "Carrera", ylab = "Porcentaje",  col = c("red","blue", "yellow", "pink" ))
 #8. Graficando variable de año de ingreso
 #aquí va el código
 tablaano_ingreso <-table(Base_de_Datos_raw$ano_ingresoCod)
 tablaano_ingreso
 tablaano_ingresoRel <- prop.table(x=tablaano_ingreso)*100
 tablaano_ingresoRel
-plot(Base_de_Datos_raw$ano_ingresoCod, main = "Gráfico 7. :Ano de ingreso del participante",
-     xlab = "Ano de ingreso", ylab = "Frecuencia",  col = c("red","blue", "yellow", "pink", "orange", "green", "brown", 'coral', "violet" ))
-
-
+barplot(Base_de_Datos_raw$ano_ingresoCod,
+        main = "Gráfico 8. :Ano de ingreso del participante",
+        xlab = "Ano de ingreso", ylab = "Porcentaje",  col = c("red","blue", "yellow", "pink", "orange", "green", "brown", 'coral', "violet" ))
 #9. Graficando variable de ideología política - espectro
 tablaId_ideologia_espectro <-table(Base_de_Datos_raw$id_ideologia_espectroCod)
 tablaId_ideologia_espectro
 tablaId_ideologia_espectroRel <- prop.table(x=tablaId_ideologia_espectro)*100
 tablaId_ideologia_espectroRel
-plot(Base_de_Datos_raw$id_ideologia_espectroCod, main = "Gráfico 9: Porcentaje de identificación ideológica dentro del espectro político", xlab =
-       "Espectro político", ylab = "Frecuencia",  col = c("red", "green", "royalblue", "pink", "yellow", "orange"))
-
-
+barplot(Base_de_Datos_raw$id_ideologia_espectroCod,
+        main = "Gráfico 9: Porcentaje de identificación ideológica dentro del espectro político",
+        xlab ="Espectro político", ylab = "Porcentaje",  col = c("red", "green", "royalblue", "pink", "yellow", "orange"))
 #10. Graficando variable de ideología por términos 1
 tablaIdeologiaTermin1 <- table(Base_de_Datos_raw$id_ideologia_terminos1Cod)
 tablaIdeologiaTermin1
@@ -262,7 +255,6 @@ barplot(tablaIdeologiaTermin1Rel, main = "Gráfico 10: Porcentaje de identificac
                 "salmon2", "cyan4", "sienna",
                 "violetred", "dodgerblue3", "palegreen3"),
         ylim = c(0, 40))
-
 #11. Graficando variable de ideología por términos 2
 tablaIdeologiaTermin2 <- table(Base_de_Datos_raw$id_ideologia_terminos2Cod)
 tablaIdeologiaTermin2
@@ -274,8 +266,6 @@ barplot(tablaIdeologiaTermin2Rel, main = "Gráfico 11: Porcentaje de identificac
                 "salmon2", "cyan4", "sienna",
                 "violetred", "dodgerblue3", "palegreen3"),
         ylim = c(0, 40))
-
-
 #12. Graficando variable de ideología por términos 3
 tablaIdeologiaTermin3 <- table(Base_de_Datos_raw$id_ideologia_terminos3Cod)
 tablaIdeologiaTermin3
@@ -287,17 +277,14 @@ barplot(tablaIdeologiaTermin3Rel, main = "Gráfico 12: Porcentaje de identificac
                 "cyan4", "darkolivegreen2", "sienna",
                 "violetred", "dodgerblue3", "palegreen3"),
         ylim = c(0, 40))
-
-
 #13. Graficando variable de preferencia de partido político
 tablapref_partido_pol<-table(Base_de_Datos_raw$pref_partido_polCod)
 tablapref_partido_pol
 tablapref_partido_polRel <- prop.table(x=tablapref_partido_pol)*100
 tablapref_partido_polRel
-plot(Base_de_Datos_raw$pref_partido_polCod, main = "Gráfico 13: Porcentaje de preferencia por un partido político",
-     xlab = "Partido Político", ylab = "Frecuencia",  col = c("red", "green", "royalblue",
-                                                                            "pink", "yellow", "orange", "beige"))
-
+barplot(Base_de_Datos_raw$pref_partido_polCod,
+        main = "Gráfico 13: Porcentaje de preferencia por un partido político",
+        xlab = "Partido Político", ylab = "Frecuencia",  col = c("red", "green", "royalblue", "pink", "yellow", "orange", "beige"))
 #14. Graficando variable de militancia en partido político (sí/no)
 tablaMilitanciaPartidoPolitico <- table(Base_de_Datos_raw$militancia_partido_polCod)
 tablaMilitanciaPartidoPolitico
@@ -305,11 +292,15 @@ MilitanciaPartidoPoliticoRel <- prop.table(x=tablaMilitanciaPartidoPolitico)*100
 MilitanciaPartidoPoliticoRel
 barplot(MilitanciaPartidoPoliticoRel, main = "Gráfico 14. Porcentaje de militancia en un partido político",
         xlab = "Militancia", ylab = "Porcentaje", col = c("pink", "lightblue"))
-
 #15. Graficando variable de militancia en partido político (identificación por partido)
 #aquí va el código
-
-
+tablaMilitanciaPartidoPolítico <- table(Base_de_Datos_raw$id_militancia_partido_polCod)
+tablaMilitanciaPartidoPolítico
+tablaMilitanciaPartidoPolíticoRel <- prop.table(x=tablaMilitanciaPartidoPolítico)*100
+tablaMilitanciaPartidoPolíticoRel
+barplot(tablaMilitanciaPartidoPolíticoRel,
+        main = "Gráfico 15. Distribución de militancias en partidos políticos nacionales",
+        xlab = "Partidos Políticos", ylab = "Porcentaje", col = c("green","yellow"))
 #16. Graficando variable de preferencia de partido federativo
 tablaPreferenciaPartidoFederativo <- table(Base_de_Datos_raw$pref_partido_fedCod)
 tablaPreferenciaPartidoFederativo
@@ -319,7 +310,6 @@ barplot(PreferenciaPartidoFederativoRel,
         main = "Gráfico 16. Porcentaje de preferencia en partidos federativos", 
         xlab = "Preferencia", ylab = "Porcentaje", 
         col = c("red", "goldenrod1", "brown", "lightblue", "pink"))
-
 #17. Graficando variable de militancia en partido federativo (sí/no)
 tablaMilitanciaPartidoFederativo <- table(Base_de_Datos_raw$militancia_partido_fedCod)
 tablaMilitanciaPartidoFederativo
@@ -328,11 +318,14 @@ MilitanciaPartidoFederativoRel
 barplot(MilitanciaPartidoFederativoRel, 
         main = "Gráfico 17. Porcentaje de militancia en partidos federativos", 
         xlab = "Militancia", ylab = "Porcentaje", col = c("seagreen", "lightblue"))
-
 #18. Graficando variable de militancia en partido federativo (identificación por partido)
-#aquí va el código
-
-
+tablaMilitanciaPartidoFederativo <- table (Base_de_Datos_raw$id_militancia_partido_fedCod)
+tablaMilitanciaPartidoFederativo
+tablaMilitanciaPartidoFederativoRel <-prop.table(x=tablaMilitanciaPartidoFederativo)*100
+tablaMilitanciaPartidoFederativoRel
+barplot(tablaMilitanciaPartidoFederativoRel,
+        main = "Gráfico 18. Distribución de militancias en partidos políticos federativos",
+        xlab = "Partidos Federativos", ylab = "Porcentaje", col = c("purple", "yellow"))
 #19. Graficando variable de participación en instancias universitarias (sí/no)
 tablaParticipacionInstanciasUniversitarias <- table(Base_de_Datos_raw$particip_inst_universitariasCod)
 tablaParticipacionInstanciasUniversitarias
@@ -341,39 +334,33 @@ ParticipacionInstanciasUniversitariasRel
 barplot(ParticipacionInstanciasUniversitariasRel, 
         main = "Gráfico 19. Porcentaje de participación en instancias universitarias", xlab = "Participación", 
         ylab = "Porcentaje", col = c("brown", "royalblue"))
-
 #20. Graficando variable de participación en instancias universitarias 1 (identificación por términos)
 #aquí va el código
 tablaid_particip_inst_universitarias1 <-table(Base_de_Datos_raw$id_particip_inst_universitarias1Cod)
 tablaid_particip_inst_universitarias1
 tablaid_particip_inst_universitarias1Rel <- prop.table(x=tablaid_particip_inst_universitarias1)*100
 tablaid_particip_inst_universitarias1Rel
-
-
-plot(Base_de_Datos_raw$id_particip_inst_universitarias1Cod, main = "Gráfico 20. :Participacion en instancias universitarias 1 ",
-     xlab = "Instancia universitaria", ylab = "Frecuencia",  col = c( "pink", "orange", "green", "brown", 'coral', "violet" ))
-
+barplot(Base_de_Datos_raw$id_particip_inst_universitarias1Cod,
+        main = "Gráfico 20. :Participacion en instancias universitarias 1 ",
+        xlab = "Instancia universitaria", ylab = "Frecuencia",  col = c( "pink", "orange", "green", "brown", 'coral', "violet" ))
 #21. Graficando variable de participación en instancias universitarias 2 (identificación por términos)
 #aquí va el código
 tablaid_particip_inst_universitarias2 <-table(Base_de_Datos_raw$id_particip_inst_universitarias2)
 tablaid_particip_inst_universitarias2
 tablaid_particip_inst_universitarias2Rel <- prop.table(x=tablaid_particip_inst_universitarias2)*100
 tablaid_particip_inst_universitarias2Rel
-
-plot(Base_de_Datos_raw$id_particip_inst_universitarias2Cod, main = "Gráfico 21. :Participacion en instancias universitarias 2 ",
-     xlab = "Instancia universitaria", ylab = "Frecuencia",  col = c("green", "brown",'coral',"violet"))
-
+barplot(Base_de_Datos_raw$id_particip_inst_universitarias2Cod,
+        main = "Gráfico 21. :Participacion en instancias universitarias 2 ",
+        xlab = "Instancia universitaria", ylab = "Frecuencia",  col = c("green", "brown",'coral',"violet"))
 #22. Graficando variable de participación en instancias universitarias 3 (identificación por términos)
 #aquí va el código
 tablaid_particip_inst_universitarias3 <-table(Base_de_Datos_raw$id_particip_inst_universitarias3)
 tablaid_particip_inst_universitarias3
 tablaid_particip_inst_universitarias3Rel <- prop.table(x=tablaid_particip_inst_universitarias3)*100
 tablaid_particip_inst_universitarias3Rel
-
-plot(Base_de_Datos_raw$id_particip_inst_universitarias2Cod, main = "Gráfico 22. :Participacion en instancias universitarias 3 ",
-     xlab = "Instancia universitaria", ylab = "Frecuencia",  col = c( "brown",'coral',"violet"))
-
-
+barplot(Base_de_Datos_raw$id_particip_inst_universitarias2Cod, 
+        main = "Gráfico 22. :Participacion en instancias universitarias 3 ",
+        xlab = "Instancia universitaria", ylab = "Frecuencia",  col = c( "brown",'coral',"violet"))
 #23. Graficando variable de participación en instancias externas (sí/no)
 #aquí va el código
 tablaParticipacionInstanciasExternas <- table(Base_de_Datos_raw$particip_inst_externasCod)
@@ -383,17 +370,30 @@ tablaParticipacionInstanciasExternasRel
 barplot(tablaParticipacionInstanciasExternasRel,
         main = "Gráfico 23. Porcentaje de participación en instancias externas",
         xlab = "Participacion", ylab = "Porcentaje", col = c("lightgreen", "lightyellow"))
-
-
 #24. Graficando variable de participación en instancias externas 1 (identificación por términos)
-#aquí va el código
-
+tablaParticipacionInstanciasExternas1 <- table(Base_de_Datos_raw$id_particip_inst_externas1Cod)
+tablaParticipacionInstanciasExternas1
+tablaParticipacionInstanciasExternas1Rel <- prop.table(x=tablaParticipacionInstanciasExternas1)*100
+tablaParticipacionInstanciasExternas1Rel
+barplot(tablaParticipacionInstanciasExternas1Rel,
+        main = "Gráfico 24. Distribución de participación en instancias externas 1",
+        xlab = "Instancias participadas", ylab = "Porcentaje", col = c( "pink", "orange", "green", "brown", 'coral', "violet"))
 #25. Graficando variable de participación en instancias externas 2 (identificación por términos)
-#aquí va el código
-
+tablaParticipacionInstanciasExternas2 <- table(Base_de_Datos_raw$id_particip_inst_externas2Cod)
+tablaParticipacionInstanciasExternas2
+tablaParticipacionInstanciasExternas2Rel <- prop.table(x=tablaParticipacionInstanciasExternas2)*100
+tablaParticipacionInstanciasExternas2Rel
+barplot(tablaParticipacionInstanciasExternas2Rel,
+        main = "Gráfico 25. Distribución de participación en instancias externas 2",
+        xlab = "Instancias participadas", ylab = "Porcentaje", col = c( "pink", "orange", "green", "brown"))
 #26. Graficando variable de participación en instancias externas 3 (identificación por términos)
-#aquí va el código
-
+tablaParticipacionInstanciasExternas3 <- table(Base_de_Datos_raw$id_particip_inst_externas3Cod)
+tablaParticipacionInstanciasExternas3
+tablaParticipacionInstanciasExternas3Rel <- prop.table(x=tablaParticipacionInstanciasExternas3)*100
+tablaParticipacionInstanciasExternas3Rel
+barplot(tablaParticipacionInstanciasExternas3Rel,
+        main = "Gráfico 26. Distribución de participación en instancias externas 3",
+        xlab = "Instancias participadas", ylab = "Porcentaje", col = c("pink", "orange", "green", "brown"))
 #27. Graficando variable de participación política en el futuro
 #aquí va el código
 tablaParticipacionFutura <- table(Base_de_Datos_raw$particip_futuraCod)
@@ -403,6 +403,7 @@ tablaParticipacionFuturaRel
 barplot(tablaParticipacionFuturaRel, 
         main = "Gráfico 27. Porcentaje de personas que participarían en un futuro", 
         xlab = "¿Participaría?", ylab = "Porcentaje", col = c("purple", "lightgreen", "lightyellow", "lightpink", "lightblue"))
+
 
 
 ##################################################################
