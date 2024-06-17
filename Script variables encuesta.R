@@ -120,12 +120,22 @@ table(Base_de_Datos_raw$particip_inst_universitariasCod)
 
 #20. Generando variable de participación en instancias universitarias 1 (identificación por términos)
 #aquí va el código
+Base_de_Datos_raw$id_particip_inst_universitarias1Cod <- factor(Base_de_Datos_raw$id_particip_inst_universitarias1, 
+                                           labels = c("Comisiones ante la Escuela de su carrera", "Junta Directiva",
+                                                      "Representacion estudiantil ante la escuela", "Tribunal Electoral Estudiantil"
+                                                      ,"Asociacion de Estudiantes de su Carrera", "Otra"))
 
 #21. Generando variable de participación en instancias universitarias 2 (identificación por términos)
 #aquí va el código
+Base_de_Datos_raw$id_particip_inst_universitarias2Cod <- factor(Base_de_Datos_raw$id_particip_inst_universitarias2, 
+                                                                labels = c("Junta Directiva","Representacion estudiantil ante la Escuela de su carrera",
+                                                                           "Tribunal Electoral Estudiantil", "Asociacion de Estudiantes de su carrera"))
 
 #22. Generando variable de participación en instancias universitarias 3 (identificación por términos)
 #aquí va el código
+Base_de_Datos_raw$id_particip_inst_universitarias2Cod <- factor(Base_de_Datos_raw$id_particip_inst_universitarias3, 
+                                                               labels = c("Representacion estudiantil ante la Escuela de su carrera",
+                                                                          "Tribunal Electoral Estudiantil", "Asociacion de Estudiantes de su carrera"))
 
 #23. Generando variable de participación en instancias externas (sí/no)
 Base_de_Datos_raw$particip_inst_externasCod <- factor(Base_de_Datos_raw$particip_inst_externas,
@@ -334,12 +344,35 @@ barplot(ParticipacionInstanciasUniversitariasRel,
 
 #20. Graficando variable de participación en instancias universitarias 1 (identificación por términos)
 #aquí va el código
+tablaid_particip_inst_universitarias1 <-table(Base_de_Datos_raw$id_particip_inst_universitarias1Cod)
+tablaid_particip_inst_universitarias1
+tablaid_particip_inst_universitarias1Rel <- prop.table(x=tablaid_particip_inst_universitarias1)*100
+tablaid_particip_inst_universitarias1Rel
+
+
+plot(Base_de_Datos_raw$id_particip_inst_universitarias1Cod, main = "Gráfico 20. :Participacion en instancias universitarias 1 ",
+     xlab = "Instancia universitaria", ylab = "Frecuencia",  col = c( "pink", "orange", "green", "brown", 'coral', "violet" ))
 
 #21. Graficando variable de participación en instancias universitarias 2 (identificación por términos)
 #aquí va el código
+tablaid_particip_inst_universitarias2 <-table(Base_de_Datos_raw$id_particip_inst_universitarias2)
+tablaid_particip_inst_universitarias2
+tablaid_particip_inst_universitarias2Rel <- prop.table(x=tablaid_particip_inst_universitarias2)*100
+tablaid_particip_inst_universitarias2Rel
+
+plot(Base_de_Datos_raw$id_particip_inst_universitarias2Cod, main = "Gráfico 21. :Participacion en instancias universitarias 2 ",
+     xlab = "Instancia universitaria", ylab = "Frecuencia",  col = c("green", "brown",'coral',"violet"))
 
 #22. Graficando variable de participación en instancias universitarias 3 (identificación por términos)
 #aquí va el código
+tablaid_particip_inst_universitarias3 <-table(Base_de_Datos_raw$id_particip_inst_universitarias3)
+tablaid_particip_inst_universitarias3
+tablaid_particip_inst_universitarias3Rel <- prop.table(x=tablaid_particip_inst_universitarias3)*100
+tablaid_particip_inst_universitarias3Rel
+
+plot(Base_de_Datos_raw$id_particip_inst_universitarias2Cod, main = "Gráfico 22. :Participacion en instancias universitarias 3 ",
+     xlab = "Instancia universitaria", ylab = "Frecuencia",  col = c( "brown",'coral',"violet"))
+
 
 #23. Graficando variable de participación en instancias externas (sí/no)
 #aquí va el código
